@@ -1,6 +1,10 @@
 RewriteEngine On
 RewriteBase /
 
+# Ad verification files (must be raw text, never SPA HTML)
+RewriteRule ^app-ads\.txt$ - [L]
+RewriteRule ^ads\.txt$ - [L]
+
 # Static legal pages
 RewriteRule ^privacy/?$ /privacy/index.html [L]
 RewriteRule ^terms/?$ /terms/index.html [L]
