@@ -3,21 +3,40 @@ import { Link } from 'react-router-dom'
 const UPDATED = '3 September 2026'
 const CONTACT = 'support@jbmrsports.com'
 
-function LegalShell({ title, children }: { title: string; children: React.ReactNode }) {
+function LegalShell({
+  title,
+  toc,
+  children,
+}: {
+  title: string
+  toc: { href: string; label: string }[]
+  children: React.ReactNode
+}) {
   return (
     <div className="legal-page">
-      <div className="legal-card">
+      <div className="legal-hero">
         <p className="legal-kicker">JBMR Sports OTT</p>
         <h1>{title}</h1>
         <p className="legal-updated muted">Last updated: {UPDATED}</p>
-        <div className="legal-body">{children}</div>
-        <footer className="legal-footer">
-          <Link to="/privacy">Privacy Policy</Link>
-          <span aria-hidden>·</span>
-          <Link to="/terms">Terms of Service</Link>
-          <span aria-hidden>·</span>
-          <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
-        </footer>
+      </div>
+      <div className="legal-layout">
+        <nav className="legal-toc" aria-label="On this page">
+          {toc.map((item) => (
+            <a key={item.href} href={item.href}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <div className="legal-card">
+          <div className="legal-body">{children}</div>
+          <footer className="legal-footer">
+            <Link to="/privacy">Privacy Policy</Link>
+            <span aria-hidden>·</span>
+            <Link to="/terms">Terms of Service</Link>
+            <span aria-hidden>·</span>
+            <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
+          </footer>
+        </div>
       </div>
     </div>
   )
@@ -25,8 +44,22 @@ function LegalShell({ title, children }: { title: string; children: React.ReactN
 
 export function PrivacyPage() {
   return (
-    <LegalShell title="Privacy Policy">
-      <section>
+    <LegalShell
+      title="Privacy Policy"
+      toc={[
+        { href: '#p1', label: '1. Introduction' },
+        { href: '#p2', label: '2. Information we collect' },
+        { href: '#p3', label: '3. How we use information' },
+        { href: '#p4', label: '4. Third-party services' },
+        { href: '#p5', label: '5. Data storage & retention' },
+        { href: '#p6', label: '6. Your rights & choices' },
+        { href: '#p7', label: '7. Children' },
+        { href: '#p8', label: '8. Security' },
+        { href: '#p9', label: '9. Changes' },
+        { href: '#p10', label: '10. Contact' },
+      ]}
+    >
+      <section id="p1">
         <h2>1. Introduction</h2>
         <p>
           JBMR Sports (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the JBMR Sports mobile apps (iOS and
@@ -35,7 +68,7 @@ export function PrivacyPage() {
         </p>
       </section>
 
-      <section>
+      <section id="p2">
         <h2>2. Information we collect</h2>
         <ul>
           <li>
@@ -60,7 +93,7 @@ export function PrivacyPage() {
         </ul>
       </section>
 
-      <section>
+      <section id="p3">
         <h2>3. How we use information</h2>
         <ul>
           <li>Provide login, live cricket streaming, scorecards, and personalized watch features.</li>
@@ -71,7 +104,7 @@ export function PrivacyPage() {
         <p>We do not sell your personal information to third parties.</p>
       </section>
 
-      <section>
+      <section id="p4">
         <h2>4. Third-party services</h2>
         <p>We use trusted providers to run the service, including:</p>
         <ul>
@@ -95,7 +128,7 @@ export function PrivacyPage() {
         </p>
       </section>
 
-      <section>
+      <section id="p5">
         <h2>5. Data storage &amp; retention</h2>
         <ul>
           <li>Phone number and sign-in state are stored on your device and in app preferences.</li>
@@ -105,7 +138,7 @@ export function PrivacyPage() {
         </ul>
       </section>
 
-      <section>
+      <section id="p6">
         <h2>6. Your rights &amp; choices</h2>
         <ul>
           <li>
@@ -121,7 +154,7 @@ export function PrivacyPage() {
         </ul>
       </section>
 
-      <section>
+      <section id="p7">
         <h2>7. Children</h2>
         <p>
           JBMR Sports is not directed at children under 13. We do not knowingly collect personal information from
@@ -129,7 +162,7 @@ export function PrivacyPage() {
         </p>
       </section>
 
-      <section>
+      <section id="p8">
         <h2>8. Security</h2>
         <p>
           We use industry-standard measures including HTTPS for network traffic and secure cloud infrastructure.
@@ -137,7 +170,7 @@ export function PrivacyPage() {
         </p>
       </section>
 
-      <section>
+      <section id="p9">
         <h2>9. Changes</h2>
         <p>
           We may update this policy. The &quot;Last updated&quot; date at the top will change. Continued use of JBMR
@@ -145,7 +178,7 @@ export function PrivacyPage() {
         </p>
       </section>
 
-      <section>
+      <section id="p10">
         <h2>10. Contact</h2>
         <p>
           Questions about privacy? Email <a href={`mailto:${CONTACT}`}>{CONTACT}</a> or visit{' '}
@@ -158,8 +191,23 @@ export function PrivacyPage() {
 
 export function TermsPage() {
   return (
-    <LegalShell title="Terms of Service">
-      <section>
+    <LegalShell
+      title="Terms of Service"
+      toc={[
+        { href: '#t1', label: '1. Agreement' },
+        { href: '#t2', label: '2. Service description' },
+        { href: '#t3', label: '3. Account & eligibility' },
+        { href: '#t4', label: '4. Acceptable use' },
+        { href: '#t5', label: '5. Content & intellectual property' },
+        { href: '#t6', label: '6. Subscriptions & payments' },
+        { href: '#t7', label: '7. Disclaimers' },
+        { href: '#t8', label: '8. Limitation of liability' },
+        { href: '#t9', label: '9. Termination' },
+        { href: '#t10', label: '10. Governing law' },
+        { href: '#t11', label: '11. Contact' },
+      ]}
+    >
+      <section id="t1">
         <h2>1. Agreement</h2>
         <p>
           By using JBMR Sports apps, website, or services, you agree to these Terms. If you do not agree, do not
@@ -167,7 +215,7 @@ export function TermsPage() {
         </p>
       </section>
 
-      <section>
+      <section id="t2">
         <h2>2. Service description</h2>
         <p>
           JBMR Sports provides live and on-demand cricket content including match streams, scorecards, highlights,
@@ -176,7 +224,7 @@ export function TermsPage() {
         </p>
       </section>
 
-      <section>
+      <section id="t3">
         <h2>3. Account &amp; eligibility</h2>
         <ul>
           <li>You must provide a valid mobile number for OTP sign-in where required.</li>
@@ -185,7 +233,7 @@ export function TermsPage() {
         </ul>
       </section>
 
-      <section>
+      <section id="t4">
         <h2>4. Acceptable use</h2>
         <p>You agree not to:</p>
         <ul>
@@ -196,7 +244,7 @@ export function TermsPage() {
         </ul>
       </section>
 
-      <section>
+      <section id="t5">
         <h2>5. Content &amp; intellectual property</h2>
         <p>
           All logos, videos, graphics, and software are owned by JBMR Sports or our licensors. Match footage and
@@ -205,7 +253,7 @@ export function TermsPage() {
         </p>
       </section>
 
-      <section>
+      <section id="t6">
         <h2>6. Subscriptions &amp; payments</h2>
         <p>
           Premium plans (when available) will be billed through Google Play or the Apple App Store. Refunds follow
@@ -213,7 +261,7 @@ export function TermsPage() {
         </p>
       </section>
 
-      <section>
+      <section id="t7">
         <h2>7. Disclaimers</h2>
         <p>
           The service is provided &quot;as is&quot;. Live scores and streams may be delayed or interrupted. We do not
@@ -221,7 +269,7 @@ export function TermsPage() {
         </p>
       </section>
 
-      <section>
+      <section id="t8">
         <h2>8. Limitation of liability</h2>
         <p>
           To the maximum extent permitted by law, JBMR Sports is not liable for indirect, incidental, or consequential
@@ -229,7 +277,7 @@ export function TermsPage() {
         </p>
       </section>
 
-      <section>
+      <section id="t9">
         <h2>9. Termination</h2>
         <p>
           We may suspend or terminate access for violations of these Terms. You may stop using the service at any
@@ -237,7 +285,7 @@ export function TermsPage() {
         </p>
       </section>
 
-      <section>
+      <section id="t10">
         <h2>10. Governing law</h2>
         <p>
           These Terms are governed by the laws of India. Disputes shall be subject to the courts of New Delhi,
@@ -245,7 +293,7 @@ export function TermsPage() {
         </p>
       </section>
 
-      <section>
+      <section id="t11">
         <h2>11. Contact</h2>
         <p>
           For questions about these Terms, contact <a href={`mailto:${CONTACT}`}>{CONTACT}</a>. See also our{' '}

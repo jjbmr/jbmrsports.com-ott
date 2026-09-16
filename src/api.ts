@@ -76,6 +76,27 @@ export function absoluteUrl(path?: string | null): string | undefined {
   return `${MEDIA_BASE}/${relative}`
 }
 
+/** Poster from a real YouTube / Cloudflare Stream URL — no local dummy art. */
+export function thumbnailFromMediaUrl(url?: string | null): string | undefined {
+  const abs = absoluteUrl(url)
+  if (!abs) return undefined
+  try {
+    const parsed = new URL(abs)
+    const host = parsed.hostname.toLowerCase()
+    if (host.includes('youtu')) {
+      const id = abs.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/)?.[1]
+      return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : undefined
+    }
+    if (host.includes('cloudflarestream.com') || host.includes('videodelivery.net')) {
+      const uid = parsed.pathname.split('/').filter(Boolean)[0]
+      if (uid && uid.length > 8) return `${parsed.origin}/${uid}/thumbnails/thumbnail.jpg`
+    }
+  } catch {
+    return undefined
+  }
+  return undefined
+}
+
 export function teamCode(team: ApiTeam) {
   return team.shortName || team.name.slice(0, 3).toUpperCase()
 }
@@ -205,6 +226,7 @@ type FirebaseFeed = {
       url?: string
       title?: string
       description?: string
+      thumbnailUrl?: string
       tournamentId?: string
       tournamentName?: string
       sortOrder?: number
@@ -248,6 +270,7 @@ export type ApiHighlight = {
   type: string
   url: string
   title?: string
+  thumbnailUrl?: string
   tournamentName?: string
   sortOrder?: number
 }
@@ -265,6 +288,7 @@ export function mapFirebaseHighlights(feed: FirebaseFeed): ApiHighlight[] {
       type: h.type || 'match_highlight',
       url: h.url || '',
       title: h.title,
+      thumbnailUrl: h.thumbnailUrl || thumbnailFromMediaUrl(h.url),
       tournamentName: h.tournamentName,
       sortOrder: h.sortOrder,
     }))

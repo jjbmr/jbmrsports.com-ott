@@ -26,6 +26,7 @@ export function LoginPage() {
     <div className="login-page">
       <div className="login-card">
         <h1>
+          <img className="web-brand-icon" src="/app-icon.png" alt="" width={36} height={36} />
           JBMR<span>SPORTS</span>
         </h1>
         <p className="muted">Live Cricket &amp; More</p>
