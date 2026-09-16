@@ -8,8 +8,10 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+# Hostinger Git pull uses this built folder as the live site.
+# Keep dist tracked. Local rebuilds still overwrite these files.
 dist-ssr
+dist/.DS_Store
 *.local
 
 # Editor directories and files
