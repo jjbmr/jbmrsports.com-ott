@@ -81,7 +81,7 @@
       <div class="legal-hero">
         <p class="kicker">JBMR Sports OTT</p>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: 5 September 2026</p>
+        <p class="updated">Last updated: 17 September 2026</p>
       </div>
       <div class="legal-layout">
         <nav class="toc" aria-label="On this page">
@@ -107,10 +107,11 @@
         <section id="p2">
           <h2>2. Information we collect</h2>
           <ul>
-            <li><strong>Account information:</strong> mobile phone number when you sign in with OTP (optional; guest browsing is supported).</li>
+            <li><strong>Account information:</strong> mobile phone number for SMS OTP sign-in, optional 4-digit PIN, and display name.</li>
+            <li><strong>Profile photo:</strong> optional avatar chosen from Photos and stored on the device.</li>
             <li><strong>Usage data:</strong> matches you view, watch history, and watchlist stored on your device.</li>
-            <li><strong>Downloads:</strong> ball clips and exported reels saved locally on your device.</li>
             <li><strong>Device &amp; technical data:</strong> app version, device type, and network information needed to stream video and load live scores.</li>
+            <li><strong>Advertising:</strong> Google AdMob may collect advertising identifiers to display ads.</li>
           </ul>
         </section>
 
@@ -118,7 +119,9 @@
           <h2>3. How we use information</h2>
           <ul>
             <li>Provide live cricket streaming, scorecards, highlights, and personalized watch features.</li>
+            <li>Verify sign-in with SMS OTP and protect the account with a PIN.</li>
             <li>Maintain watch history and watchlist on your device.</li>
+            <li>Show ads that help support free streaming.</li>
             <li>Improve app performance, fix errors, and deliver updates.</li>
             <li>Respond to support requests at <a href="mailto:support@jbmrsports.com">support@jbmrsports.com</a>.</li>
           </ul>
@@ -128,8 +131,10 @@
         <section id="p4">
           <h2>4. Third-party services</h2>
           <ul>
-            <li><strong>Google Firebase</strong> — match schedules, highlights, and app content.</li>
-            <li><strong>Cloudflare</strong> — live video streaming and media delivery.</li>
+            <li><strong>2Factor</strong> — SMS one-time passwords for sign-in.</li>
+            <li><strong>Google Firebase</strong> — authentication, Firestore account data, and match content.</li>
+            <li><strong>Google AdMob</strong> — in-app advertising.</li>
+            <li><strong>Cloudflare Stream</strong> — live video streaming and in-app playback (no file download).</li>
             <li><strong>CrickDB / cricket APIs</strong> — live scores and match statistics.</li>
             <li><strong>Google Play / Apple App Store</strong> — app distribution.</li>
           </ul>
@@ -138,8 +143,9 @@
         <section id="p5">
           <h2>5. Data storage &amp; retention</h2>
           <ul>
+            <li>Phone number, PIN hash, and display name are stored in Firebase with your account.</li>
             <li>Watch history and watchlist are stored locally on your device.</li>
-            <li>Downloaded clips remain on your device until you delete them.</li>
+            <li>Match audio/video is streamed in the app only. We do not offer downloads or save-to-Photos for match footage.</li>
             <li>Support emails are retained as long as needed to resolve your request.</li>
           </ul>
         </section>
@@ -147,6 +153,7 @@
         <section id="p6">
           <h2>6. Your rights</h2>
           <ul>
+            <li>Delete your account in the app: Profile → Delete Account.</li>
             <li>Clear local data by uninstalling the app or clearing app storage.</li>
             <li>Email us to request access, correction, or deletion of account data we hold.</li>
           </ul>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const UPDATED = '3 September 2026'
+const UPDATED = '17 September 2026'
 const CONTACT = 'support@jbmrsports.com'
 
 function LegalShell({
@@ -72,23 +72,24 @@ export function PrivacyPage() {
         <h2>2. Information we collect</h2>
         <ul>
           <li>
-            <strong>Account information:</strong> mobile phone number when you sign in (OTP verification). Demo
-            builds may accept a fixed test OTP without sending SMS.
+            <strong>Account information:</strong> mobile phone number when you sign in with SMS OTP. You may also
+            set a 4-digit PIN and a display name. Guest browsing is available without an account.
+          </li>
+          <li>
+            <strong>Profile photo:</strong> optional, chosen from your photo library and stored on this device for
+            your avatar. We do not upload match video to Photos or to our servers from the camera roll.
           </li>
           <li>
             <strong>Usage data:</strong> matches you view, watch history, watchlist, and in-app preferences
             (auto-play, live alerts, Wi‑Fi only) stored on your device.
           </li>
           <li>
-            <strong>Downloads:</strong> ball clips and exported reels saved locally on your device.
-          </li>
-          <li>
             <strong>Device &amp; technical data:</strong> app version, device type, and network information needed
             to stream video and load live scores.
           </li>
           <li>
-            <strong>Content you interact with:</strong> live streams, highlights, shorts, and match scorecards
-            served from our Firebase and cricket data partners.
+            <strong>Advertising data:</strong> Google AdMob may collect device and advertising identifiers to show
+            ads in the app, subject to AdMob&apos;s privacy policy.
           </li>
         </ul>
       </section>
@@ -97,7 +98,9 @@ export function PrivacyPage() {
         <h2>3. How we use information</h2>
         <ul>
           <li>Provide login, live cricket streaming, scorecards, and personalized watch features.</li>
+          <li>Verify your number with a one-time SMS code and protect the account with an optional PIN.</li>
           <li>Maintain watch history and watchlist on your device.</li>
+          <li>Show ads that help support free streaming.</li>
           <li>Improve app performance, fix errors, and deliver updates.</li>
           <li>Respond to support requests sent to {CONTACT}.</li>
         </ul>
@@ -109,11 +112,18 @@ export function PrivacyPage() {
         <p>We use trusted providers to run the service, including:</p>
         <ul>
           <li>
-            <strong>Google Firebase</strong> — match schedules, highlights, and app content (Realtime Database,
-            hosting).
+            <strong>2Factor</strong> — SMS delivery of one-time passwords for sign-in.
           </li>
           <li>
-            <strong>Cloudflare</strong> — live video streaming and media delivery (Stream, R2).
+            <strong>Google Firebase</strong> — Authentication (custom token session), Cloud Firestore (account
+            profile and PIN hash), Cloud Functions, and match content.
+          </li>
+          <li>
+            <strong>Google AdMob</strong> — in-app advertising.
+          </li>
+          <li>
+            <strong>Cloudflare Stream</strong> — live and on-demand video streaming (playback in-app only; we do not
+            offer audio/video file downloads).
           </li>
           <li>
             <strong>CrickDB / cricket APIs</strong> — live scores, ball-by-ball, and match statistics.
@@ -131,9 +141,9 @@ export function PrivacyPage() {
       <section id="p5">
         <h2>5. Data storage &amp; retention</h2>
         <ul>
-          <li>Phone number and sign-in state are stored on your device and in app preferences.</li>
-          <li>Watch history and watchlist are stored locally (up to 50 recent matches).</li>
-          <li>Downloaded clips and reels remain on your device until you delete them.</li>
+          <li>Phone number, PIN hash, and display name are stored in Firebase associated with your account.</li>
+          <li>Watch history and watchlist are stored locally on your device (up to 50 recent matches).</li>
+          <li>Match video is streamed for in-app playback. We do not provide a download or save-to-Photos feature for match audio or video.</li>
           <li>We retain support emails as long as needed to resolve your request.</li>
         </ul>
       </section>
@@ -141,6 +151,10 @@ export function PrivacyPage() {
       <section id="p6">
         <h2>6. Your rights &amp; choices</h2>
         <ul>
+          <li>
+            <strong>Delete account</strong> — Profile → Delete Account removes your Firebase login, PIN lookup, and
+            profile. You can also email {CONTACT}.
+          </li>
           <li>
             <strong>Sign out</strong> — clears your session on the device (Profile → Log Out).
           </li>
@@ -229,7 +243,6 @@ export function TermsPage() {
         <ul>
           <li>You must provide a valid mobile number for OTP sign-in where required.</li>
           <li>You are responsible for activity on your account and keeping your device secure.</li>
-          <li>Demo OTP modes are for testing only and may be disabled in production.</li>
         </ul>
       </section>
 
@@ -237,7 +250,7 @@ export function TermsPage() {
         <h2>4. Acceptable use</h2>
         <p>You agree not to:</p>
         <ul>
-          <li>Copy, redistribute, or rebroadcast streams without permission.</li>
+          <li>Copy, download, save, rip, or redistribute match audio or video.</li>
           <li>Reverse engineer, scrape, or overload our servers or APIs.</li>
           <li>Use the service for unlawful purposes or to harass others.</li>
           <li>Circumvent geographic, DRM, or access restrictions.</li>
@@ -247,9 +260,10 @@ export function TermsPage() {
       <section id="t5">
         <h2>5. Content &amp; intellectual property</h2>
         <p>
-          All logos, videos, graphics, and software are owned by JBMR Sports or our licensors. Match footage and
-          statistics may be subject to tournament and broadcaster rights. Personal, non-commercial viewing is
-          permitted; commercial use is prohibited without written consent.
+          All logos, videos, graphics, and software are owned by JBMR Sports or our licensors. Match footage is
+          original JBMR Sports cricket coverage (and licensed partners where noted). The app is a cricket OTT
+          service, not a third-party video downloader. You may stream content in the app for personal,
+          non-commercial viewing. Saving or exporting audio/video files is not permitted.
         </p>
       </section>
 
