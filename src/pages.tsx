@@ -1,4 +1,5 @@
 
+const APP_STORE_URL = 'https://apps.apple.com/in/app/jbmr-sports/id6808138064'
 const STORE_MAIL = 'mailto:support@jbmrsports.com?subject=JBMR%20Sports%20app'
 
 const FEATURES = [
@@ -163,7 +164,12 @@ export function HomePage() {
             <h2>Get JBMR Sports</h2>
             <p>Live cricket, clips and shorts only in the iOS and Android apps.</p>
             <div className="web-store-row">
-              <a className="web-store-btn" href={STORE_MAIL}>
+              <a
+                className="web-store-btn"
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img src="/figma-v2/icon-apple.svg" alt="" width={20} height={20} />
                 <span>
                   <small>Download on the</small>
