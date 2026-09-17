@@ -3,11 +3,9 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 
 const WEB_NAV: Array<{ to: string; label: string; end?: boolean; nav?: boolean }> = [
   { to: '/', label: 'Home', end: true, nav: true },
-  { to: '/schedule', label: 'Live Matches', nav: true },
-  { to: '/schedule', label: 'Schedule' },
-  { to: '/#ball-by-ball', label: 'Ball by Ball' },
-  { to: '/#reels', label: 'Reels' },
   { to: '/#features', label: 'Features' },
+  { to: '/#how', label: 'How it works' },
+  { to: '/#download', label: 'Download' },
 ]
 
 export function BrandMark() {
@@ -28,30 +26,28 @@ export function SiteFooter() {
           <Link to="/" className="web-brand" aria-label="JBMR Sports home">
             <BrandMark />
           </Link>
-          <p>Live cricket, scores, ball-by-ball clips, and reels from JBMR Sports.</p>
+          <p>JBMR Sports is a cricket app. This site is the landing page — watch in the app.</p>
         </div>
         <div className="web-site-footer-cols">
           <div>
-            <h3>Quick Links</h3>
+            <h3>Site</h3>
             <Link to="/">Home</Link>
-            <Link to="/schedule">Live Matches</Link>
-            <Link to="/schedule">Schedule</Link>
-            <a href="/#ball-by-ball">Ball by Ball</a>
-            <a href="/#reels">Reels</a>
+            <a href="/#features">Features</a>
+            <a href="/#how">How it works</a>
+            <a href="/#download">Download</a>
           </div>
           <div>
-            <h3>Features</h3>
-            <a href="/#features">Ball by Ball</a>
-            <a href="/#reels">Reels</a>
-            <a href="/#download">Mobile app</a>
-            <a href="/#schedule-home">Schedule</a>
+            <h3>App</h3>
+            <a href="/#features">Live stream</a>
+            <a href="/#features">Ball clips</a>
+            <a href="/#features">Shorts</a>
+            <a href="/#download">iOS &amp; Android</a>
           </div>
           <div>
             <h3>Support</h3>
-            <a href="mailto:support@jbmrsports.com">Help Center</a>
-            <a href="mailto:support@jbmrsports.com">FAQs</a>
-            <a href="mailto:support@jbmrsports.com">Contact Us</a>
-            <a href="/#download">App Installation Guide</a>
+            <a href="mailto:support@jbmrsports.com">Contact</a>
+            <Link to="/privacy">Privacy</Link>
+            <Link to="/terms">Terms</Link>
           </div>
         </div>
       </div>
@@ -69,13 +65,7 @@ export function SiteFooter() {
 export function Layout() {
   const { pathname, hash } = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
-  const fullBleed =
-    pathname === '/' ||
-    pathname === '/privacy' ||
-    pathname === '/terms' ||
-    pathname === '/schedule' ||
-    pathname.startsWith('/match/') ||
-    pathname.startsWith('/tournament/')
+  const fullBleed = pathname === '/' || pathname === '/privacy' || pathname === '/terms'
 
   useEffect(() => {
     window.history.scrollRestoration = 'manual'
